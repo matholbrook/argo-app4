@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: giant-gorilla
+  namespace: app-bar-prd
+  labels:
+    app: giant-gorilla
+    env: prd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: giant-gorilla
+      env: prd
+  template:
+    metadata:
+      labels:
+        app: giant-gorilla
+        env: prd
+    spec:
+      containers:
+      - name: webserver-simple
+        image: docker.io/kostiscodefresh/gitops-simple-app:v1.0
+        ports:
+        - containerPort: 8080
