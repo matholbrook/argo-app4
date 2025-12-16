@@ -3,14 +3,29 @@ kind: AppProject
 metadata:
   name: london
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
-  sourceRepos: []
+  description: London App Projects
+  sourceRepos:
+    - https://github.com/matholbrook/argo-*
   sourceNamespaces:
-    - app-foo-prd
-  destinations: []
-  clusterResourceWhitelist: []
+    - app-bar-prd
+  destinations:
+    - namespace: app-bar-prd
+      server: https://kubernetes.default.svc
+      name: in-cluster
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
   namespaceResourceWhitelist:
     - group: apps
-      kind: Deployments
-    - group: v1
-      kind: Services
+      kind: Deployment
+    - group: apps
+      kind: ReplicaSet
+    - group: ''
+      kind: Pod
+    - group: ''
+      kind: Service
+  orphanedResources:
+    warn: false
