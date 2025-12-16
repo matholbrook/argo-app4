@@ -3,6 +3,9 @@ kind: Application
 metadata:
   name: argo-app4
   namespace: argocd
+  labels:
+    dept: broking
+    app: argo-app4
 spec:
   project: london
   source:
