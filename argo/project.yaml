@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: london
+  namespace: argocd
+spec:
+  sourceRepos: []
+  sourceNamespaces:
+    - app-foo-prd
+  destinations: []
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+    - group: apps
+      kind: Deployments
+    - group: v1
+      kind: Services
