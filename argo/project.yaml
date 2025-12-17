@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  description: London App Projects
+  description: London Apps Project
   sourceRepos:
     - https://github.com/matholbrook/argo-*
   sourceNamespaces:
